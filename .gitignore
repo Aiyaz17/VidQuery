@@ -24,5 +24,6 @@ client/.pnp.js
 
 
 /server/.env
+/client/.env
 /server/package-lock.json
 /server/node_modules
