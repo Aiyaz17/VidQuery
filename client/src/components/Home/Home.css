@@ -1,0 +1,87 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 10% auto 0;
+  text-align: "center";
+}
+
+.video-card {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 20px;
+  width: 100%;
+  height: 180px;
+  margin: 10px;
+}
+
+.video-card:hover {
+  box-shadow: rgba(99, 99, 150, 0.3) 0px 2px 8px 0px;
+}
+.video-card-image {
+  width: 30%;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+.video-card-details {
+  width: 70%;
+  text-align: left;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.video-card-details .description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.video-card-link {
+  width: 100%;
+}
+
+.video-links {
+  display: flex;
+  gap: 20px;
+  color: blue !important;
+  margin-top: auto !important;
+  margin-bottom: 10px;
+}
+
+.existing-videos-innercontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  padding-bottom: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .video-card {
+    flex-direction: column;
+    height: 400px;
+  }
+  .video-card .video-card-image {
+    width: "100%";
+    max-height: 200px;
+  }
+  .video-card-details {
+    padding: 30px 15px 10px;
+    width: 90%;
+  }
+  .video-links {
+    margin-top: 20px !important;
+  }
+}

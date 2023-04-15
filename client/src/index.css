@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;800&family=Open+Sans:wght@400;500;600;700;800&display=swap");
+:root {
+  --orange-0: hwb(14 50% 0%);
+  --orange-1: #e69a81;
+  --orange-2: #e4815e;
+  --orange-3: #e2673b;
+  --orange-4: #ff571a;
+  --orange-5: #fb6107;
+  --orange-6: #ed7e43;
+}
+* {
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s;
+  font-family: "Manrope", sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  scroll-behavior: smooth;
+}
+body {
+  position: relative;
+}
+a {
+  text-decoration: none !important;
+  color: initial !important;
+}
+button:hover {
+  cursor: pointer;
+}
+.section {
+  padding: 0 8%;
+}
+.primary-highlight {
+  color: var(--orange-4);
+  opacity: 1;
+}
+.open-sans {
+  font-family: "Open Sans", sans-serif !important;
+}
+.button {
+  background-color: var(--orange-6) !important;
+  width: fit-content !important;
+  /* margin-top: 2.5rem !important; */
+  font-size: 1.2rem !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  color: var(--yellow-2) !important;
+  font-weight: 600 !important;
+  padding: 5px 20px !important;
+  transition: all 0.3s !important;
+  /* margin-bottom: 10px; */
+  border: 1px solid transparent;
+  color: white !important;
+  opacity: "0.95";
+}
+.button-2 {
+  background-color: var(--orange-6) !important;
+  width: fit-content !important;
+  font-size: 1rem !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  color: var(--yellow-2) !important;
+  font-weight: 500 !important;
+  padding: 5px 20px !important;
+  transition: all 0.3s !important;
+  border: 1px solid transparent;
+  color: white !important;
+  opacity: "0.95";
+  text-transform: capitalize !important;
+}
+.button-2:hover {
+  transform: scale(1.03);
+}
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 0 4%;
+  }
+}
