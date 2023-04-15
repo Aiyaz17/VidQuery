@@ -20,6 +20,7 @@ async function uploadToPinecone(data) {
     });
 
     var texts = await text_splitter.createDocuments([data]);
+    console.log({ texts });
     console.log("After splitting Total documents = " + texts.length);
     console.log("2. Adding random id to metaData of each document");
     texts = texts.map((text) => ({
@@ -32,6 +33,7 @@ async function uploadToPinecone(data) {
     console.log("3. Uploading to pinecone index");
     const indexName = process.env.PINECONE_INDEX;
     const pineconeIndex = client.Index(indexName);
+
     const docSearch = await PineconeStore.fromDocuments(texts, embeddings, {
       pineconeIndex,
     });
