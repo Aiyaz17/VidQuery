@@ -10,7 +10,7 @@ This question-answering system is built using MERN Stack and utilizes OpenAI's W
 git clone https://github.com/Aiyaz17/VidQuery.git
 ```
 
-1. Install the necessary dependencies using npm in both folders server and client:
+2. Install the necessary dependencies using npm in both folders server and client:
 
 ```bash
 
@@ -21,7 +21,7 @@ cd ../server
 npm install
 ```
 
-1. Set Env variables in server and client .env files:
+3. Set Env variables in server and client .env files:
 
 ```
 In both Client and server
@@ -31,13 +31,13 @@ In both Client and server
 3.3 Open ".env" file and Enter corresponding values for each Variable
 ```
 
-1. Start the server :
+4. Start the server :
 
 ```bash
 npm start
 ```
 
-1. Run the client:
+5. Run the client:
 
 ```bash
 
