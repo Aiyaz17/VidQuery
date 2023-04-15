@@ -20,7 +20,7 @@ async function uploadToPinecone(data) {
     });
 
     var texts = await text_splitter.createDocuments([data]);
-    console.log({ texts });
+    // console.log({ texts });
     console.log("After splitting Total documents = " + texts.length);
     console.log("2. Adding random id to metaData of each document");
     texts = texts.map((text) => ({

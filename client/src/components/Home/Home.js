@@ -31,10 +31,15 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`${baseurl}/api/list-videos`).then((res) => {
-      console.log(res.data.data);
-      setVideoCards(res.data.data);
-    });
+    axios
+      .get(`${baseurl}/api/list-videos`)
+      .then((res) => {
+        console.log(res.data.data);
+        setVideoCards(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   function isValidYoutubeLink(link) {
