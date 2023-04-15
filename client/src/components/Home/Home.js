@@ -98,7 +98,7 @@ const Home = () => {
           <img src={data.thumbnail} alt="video thumbnail" />
         </Box>
         <Box className="video-card-details">
-          <Typography variant="h5" sx={{ opacity: "0.5" }}>
+          <Typography variant="h5" sx={{ opacity: "0.65" }}>
             {data.title}
           </Typography>
           <Typography

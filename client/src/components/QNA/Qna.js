@@ -43,6 +43,7 @@ const QnaPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setAnswer("");
     console.log(question);
     axios
       .post(`${baseurl}/api/query`, { query: question, id: videoData._id })
