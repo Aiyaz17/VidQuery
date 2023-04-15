@@ -129,7 +129,7 @@ const queryToPinecone = async (req, res) => {
   console.log("Got video Data from MongoDB now querying pinecone");
   const queryEmbedding = await embeddings.embedQuery(query);
 
-  const index = client.Index("index1");
+  const index = client.Index(process.env.PINECONE_INDEX);
   const queryRequest = {
     vector: queryEmbedding,
     topK: 2,

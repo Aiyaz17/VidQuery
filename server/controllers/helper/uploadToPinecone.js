@@ -30,7 +30,7 @@ async function uploadToPinecone(data) {
     }));
 
     console.log("3. Uploading to pinecone index");
-    const indexName = "index1";
+    const indexName = process.env.PINECONE_INDEX;
     const pineconeIndex = client.Index(indexName);
     const docSearch = await PineconeStore.fromDocuments(texts, embeddings, {
       pineconeIndex,
