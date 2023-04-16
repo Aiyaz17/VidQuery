@@ -81,7 +81,6 @@ const createVideo = async (req, res) => {
     try {
       const uploadedDocsResp = await uploadToPinecone((data = transcript));
 
-      // console.log({ uploadedDocsResp });
       console.log(
         "Recieved docIds / Uploaded to pinecone - now saving to MongoDB"
       );
@@ -129,7 +128,7 @@ async function audioChunksToTranscript(audioStreams) {
   for (let i = 0; i < audioStreams.length; i++) {
     try {
       console.log(
-        "\n\n\nConverting audio to text - " +
+        "\n\nConverting audio to text - " +
           (i + 1) +
           " / " +
           audioStreams.length
