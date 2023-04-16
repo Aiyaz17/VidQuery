@@ -17,6 +17,7 @@
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@fortaine/fetch-event-source": "^3.0.6",
     "@pinecone-database/pinecone": "^0.0.12",
+    "child_process": "^1.0.2",
     "concat-stream": "^2.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -28,8 +29,9 @@
     "openai": "^3.2.1",
     "pinecone": "^0.1.0",
     "request": "^2.88.2",
+    "stream-chunker": "^1.2.8",
     "uuid": "^9.0.0",
-    "ytdl-core": "^4.11.3"
+    "ytdl-core": "^4.11.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

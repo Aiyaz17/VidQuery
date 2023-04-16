@@ -4,6 +4,7 @@ async function uploadToPinecone(data) {
   const { client } = require("../helper/pinecone");
   const { PineconeStore } = require("langchain/vectorstores/pinecone");
   const { v4: uuidv4 } = require("uuid");
+
   require("dotenv").config();
 
   const embeddings = new OpenAIEmbeddings({
@@ -50,4 +51,5 @@ async function uploadToPinecone(data) {
     return false;
   }
 }
+
 module.exports = { uploadToPinecone };

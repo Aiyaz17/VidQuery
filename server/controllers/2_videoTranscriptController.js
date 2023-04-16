@@ -48,73 +48,41 @@ const createVideo = async (req, res) => {
   const stream = ytdl(videoUrl, {
     filter: "audioonly",
     quality: "highestaudio",
+    format: "mp3",
   });
 
-  var audioChunks = [];
+  const audioChunks = [];
   const audioStreams = [];
 
   stream.on("data", async (chunk) => {
     if (!chunk.length) {
       return;
     }
-
     audioChunks.push(chunk);
     if (Buffer.concat(audioChunks).length >= chunkSize) {
       const audioData = Buffer.concat(audioChunks);
-      audioStreams.push(audioData);
-      audioChunks = [];
+      const audioStream = Readable.from(audioData);
+      audioStream.path = `file.mp3`;
+      audioStreams.push(audioStream);
+      audioChunks.length = 0;
     }
   });
 
   stream.on("end", async () => {
     if (audioChunks.length > 0) {
+      // transcript += await audioChunksToTranscript(audioChunks);
+      // console.log("Last Audio chunk " + i + " retrieved.");
+
       const audioData = Buffer.concat(audioChunks);
-      audioStreams.push(audioData);
+      const audioStream = Readable.from(audioData);
+      audioStream.path = `file.mp3`;
+      audioStreams.push(audioStream);
     }
     console.log("Chunks segregation complete,len = ", audioStreams.length);
 
     transcript = await audioChunksToTranscript(audioStreams);
     console.log("Audio retrieval complete .");
-    // console.log({ transcript });
-    audioChunks.length = 0;
-
-    try {
-      const uploadedDocsResp = await uploadToPinecone((data = transcript));
-
-      // console.log({ uploadedDocsResp });
-      console.log(
-        "Recieved docIds / Uploaded to pinecone - now saving to MongoDB"
-      );
-      const videoTranscript = new VideoTranscript({
-        title,
-        thumbnail,
-        description,
-        videoUrl,
-        transcript,
-        documentsId: uploadedDocsResp.documentIds,
-        createdAt: new Date(),
-      });
-
-      const savedVideoTranscript = await videoTranscript.save();
-      console.log("Saved details to MongoDB as well, Task completed !");
-
-      if (uploadedDocsResp) {
-        res.json({
-          status: "success",
-          data: {
-            savedVideoTranscript,
-          },
-        });
-      } else throw new Error("Error uploading to pinecone");
-    } catch (err) {
-      console.log(err);
-      res.json({
-        status: "failed",
-        data: {
-          err,
-        },
-      });
-    }
+    console.log({ transcript });
   });
 
   stream.on("error", (err) => {
@@ -125,7 +93,6 @@ const createVideo = async (req, res) => {
 
 async function audioChunksToTranscript(audioStreams) {
   let transcript = "";
-
   for (let i = 0; i < audioStreams.length; i++) {
     try {
       console.log(
@@ -134,13 +101,20 @@ async function audioChunksToTranscript(audioStreams) {
           " / " +
           audioStreams.length
       );
-      const audioStream = Readable.from(audioStreams[i]);
-      audioStream.path = `file${i}.mp3`;
-
-      const resp = await openai.createTranscription(audioStream, "whisper-1");
+      console.log(audioStreams[i]);
+      console.log("Type = " + typeof audioStreams[i]);
+      console.log("Readable = " + audioStreams[i].readable);
+      const resp = await openai.createTranscription(
+        audioStreams[i],
+        "whisper-1"
+      );
       // console.log(resp.data.text);
       transcript += resp.data.text;
-      console.log("Got transcript");
+      console.log("Got trnscript");
+      //sleep for 1 sec
+      console.log("Sleeping for 10 sec");
+      await new Promise((resolve) => setTimeout(resolve, 10000));
+      console.log("Woke up");
     } catch (err) {
       console.log(err);
       console.log("Error occurred, skipping chunk");
