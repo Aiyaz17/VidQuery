@@ -1,6 +1,8 @@
 ## **Introduction**
 
-This question-answering system is built using MERN Stack and utilizes OpenAI's Whisper API, Langchain, and Pinecone. The system allows users to extract the entire transcript of a YouTube video and store it in MongoDB. The stored transcript is then used to create a question-answering system that utilizes Langchain, Pinecone, and OpenAI.
+This question-answering system aims to make information from YouTube videos more accessible. You can ask questions about a YouTube video and the system will find the answer within the transcript of the video.
+
+Here's a bit about how it works technically: The system is built using a combination of technologies including MERN Stack (MongoDB, Express.js, React.js, and Node.js) to manage data and user interaction. To understand the video content, it utilizes OpenAI's Whisper API for speech recognition and Langchain for natural language processing. Finally, Pinecone helps store and retrieve information efficiently to answer your questions.
 
 ## **Installation**
 
